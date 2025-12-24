@@ -1,3 +1,4 @@
 [submodule "venders/zed"]
 	path = venders/zed
 	url = git@github.com:zed-industries/zed.git
+	branch = main
