@@ -2,16 +2,30 @@
 
 ## 📋 项目清单
 
+```shell
+git submodule add git@github.com:zed-industries/zed.git venders/zed
+git submodule add git@github.com:LadybirdBrowser/ladybird.git venders/ladybird
+git submodule add git@github.com:crewAIInc/crewAI.git venders/crewAI
+git submodule add git@github.com:langchain-ai/langgraph.git venders/langgraph
+git submodule add git@github.com:vikhyat/moondream.git venders/moondream
+git submodule add git@github.com:infiniflow/ragflow.git venders/ragflow
+git submodule add git@github.com:emmett-framework/granian.git venders/granian
+git submodule add git@github.com:oven-sh/bun.git venders/bun
+git submodule add git@github.com:huggingface/candle.git venders/candle
+git submodule add git@github.com:qdrant/qdrant.git venders/qdrant
+git submodule add git@github.com:surrealdb/surrealdb.git venders/surrealdb
+git submodule add git@github.com:spinframework/spin.git venders/spin
+git submodule add git@github.com:WasmEdge/WasmEdge.git venders/WasmEdge
+git submodule add git@github.com:AppFlowy-IO/AppFlowy.git venders/AppFlowy
+git submodule add git@github.com:nocodb/nocodb.git venders/nocodb
+git submodule add git@github.com:appwrite/appwrite.git venders/appwrite
+```
+
 ### 1. 编辑器与开发工具
 
 #### **Zed** - 高性能代码编辑器
 
-- **项目地址**: https://github.com/zed-industries/zed
-
-```shell
-git submodule add git@github.com:zed-industries/zed.git venders/zed
-
-```
+- **项目地址**: <https://github.com/zed-industries/zed>
 
 - **研究文档**:
   - [GPUI 开发文档](https://docsmith.aigne.io/docs/zed/en/core-development-developing-with-gpui-ae8f50)
@@ -30,8 +44,8 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Ladybird** - 独立浏览器引擎
 
-- **项目地址**: https://github.com/LadybirdBrowser/ladybird
-- **官网**: https://ladybird.org/
+- **项目地址**: <https://github.com/LadybirdBrowser/ladybird>
+- **官网**: <https://ladybird.org/>
 - **核心技术**: C++, Swift, LibWeb, LibJS, 多进程架构
 - **学习要点**:
   - 从零构建浏览器引擎，理解 HTML 解析、CSS 布局算法
@@ -45,7 +59,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **AGENTS.md** - AI 智能体上下文协议
 
-- **规范地址**: https://agents.md/
+- **规范地址**: <https://agents.md/>
 - **研究文档**:
   - [OpenAI 开发者指南](https://developers.openai.com/codex/guides/agents-md/)
   - [GitHub 最佳实践](https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/)
@@ -60,7 +74,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 #### **Model Context Protocol (MCP)**
 
 - **基金会**: Agentic AI Foundation (AAIF)
-- **官网**: https://openai.com/index/agentic-ai-foundation/
+- **官网**: <https://openai.com/index/agentic-ai-foundation/>
 - **核心技术**: JSON-RPC, Client-Host-Server 架构, 上下文传输优化
 - **学习要点**:
   - 标准化数据管道，类似 LSP 架构
@@ -70,7 +84,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **CrewAI** - 多智能体编排框架
 
-- **项目地址**: https://github.com/joaomdmoura/crewAI
+- **项目地址**: <https://github.com/joaomdmoura/crewAI>
 - **研究文档**:
   - [框架对比分析](https://www.3pillarglobal.com/insights/blog/comparison-crewai-langgraph-n8n/)
   - [选择指南](https://www.datacamp.com/tutorial/crewai-vs-langgraph-vs-autogen)
@@ -83,7 +97,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **LangGraph** - 图导向智能体编排
 
-- **项目地址**: https://github.com/langchain-ai/langgraph
+- **项目地址**: <https://github.com/langchain-ai/langgraph>
 - **研究文档**:
   - [框架对比](https://www.zenml.io/blog/langgraph-vs-crewai)
   - [差异分析](https://www.truefoundry.com/blog/crewai-vs-langgraph)
@@ -100,7 +114,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Moondream** - 端侧视觉语言模型
 
-- **项目地址**: https://github.com/vikhyat/moondream
+- **项目地址**: <https://github.com/vikhyat/moondream>
 - **研究文档**:
   - [Moondream 3 预览](https://moondream.ai/blog/moondream-3-preview)
   - [官方文档](https://docs.moondream.ai/)
@@ -113,7 +127,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **RAGFlow** - 深度文档理解 RAG 引擎
 
-- **项目地址**: https://github.com/infiniflow/ragflow
+- **项目地址**: <https://github.com/infiniflow/ragflow>
 - **研究文档**:
   - [深度文档理解](https://github.com/infiniflow/ragflow/blob/main/deepdoc/README.md)
   - [技术详解](https://medium.com/@infiniflowai/a-deep-dive-into-ragflow-v0-15-0-9f1dbca21347)
@@ -131,7 +145,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Granian** - Rust HTTP 服务器（Python 应用）
 
-- **项目地址**: https://github.com/emmett-framework/granian
+- **项目地址**: <https://github.com/emmett-framework/granian>
 - **研究文档**:
   - [PyPI 文档](https://pypi.org/project/granian/2.2.3/)
   - [播客访谈](https://talkpython.fm/episodes/show/463/running-on-rust-granian-web-server)
@@ -144,7 +158,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Bun** - JavaScript 全能工具箱
 
-- **项目地址**: https://github.com/oven-sh/bun
+- **项目地址**: <https://github.com/oven-sh/bun>
 - **核心技术**: Zig, JavaScriptCore, 一体化架构
 - **学习要点**:
   - 基于 JavaScriptCore 而非 V8，更快启动和更低内存
@@ -158,7 +172,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Candle** - Rust 极简 ML 框架
 
-- **项目地址**: https://github.com/huggingface/candle
+- **项目地址**: <https://github.com/huggingface/candle>
 - **研究文档**:
   - [框架对比](https://medium.com/@athan.seal/candle-vs-burn-comparing-rust-machine-learning-frameworks-4dbd59c332a1)
 - **核心技术**: Rust, Tensor 操作, CUDA, Metal, Serverless 优化
@@ -170,7 +184,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Burn** - Rust 深度学习框架
 
-- **项目地址**: https://github.com/tracel-ai/burn
+- **项目地址**: <https://github.com/tracel-ai/burn>
 - **核心技术**: Rust, 动态图, 后端 Trait 系统, Autodiff
 - **学习要点**:
   - 多后端支持：WGPU, Torch, Candle, NdArray
@@ -184,7 +198,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Qdrant** - 向量数据库
 
-- **项目地址**: https://github.com/qdrant/qdrant
+- **项目地址**: <https://github.com/qdrant/qdrant>
 - **研究文档**:
   - [性能基准](https://qdrant.tech/benchmarks/)
   - [对比指南](https://www.firecrawl.dev/blog/best-vector-databases-2025)
@@ -197,7 +211,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **SurrealDB** - 多模态数据库
 
-- **项目地址**: https://github.com/surrealdb/surrealdb
+- **项目地址**: <https://github.com/surrealdb/surrealdb>
 - **研究文档**:
   - [2.0 发布](https://surrealdb.com/blog/challenge-accepted-announcing-surrealdb-2-0)
   - [安全特性](https://www.hpcwire.com/bigdatawire/this-just-in/surrealdb-2-0-introduces-advanced-security-and-data-management-features/)
@@ -214,7 +228,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Spin** - Wasm Serverless 框架
 
-- **项目地址**: https://github.com/fermyon/spin
+- **项目地址**: <https://github.com/fermyon/spin>
 - **研究文档**:
   - [Spin 2.0 介绍](https://www.fermyon.com/blog/introducing-spin-v2)
   - [组件组合](https://www.fermyon.com/blog/composing-components-with-spin-2)
@@ -228,7 +242,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **WasmEdge** - AI 推理边缘运行时
 
-- **项目地址**: https://github.com/WasmEdge/WasmEdge
+- **项目地址**: <https://github.com/WasmEdge/WasmEdge>
 - **核心技术**: Wasm, PyTorch/TensorFlow 插件, GPU 调用, Kubernetes 集成
 - **学习要点**:
   - Wasm 沙箱内高效调用宿主机 GPU 资源
@@ -241,7 +255,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **AppFlowy** - Notion 开源替代
 
-- **项目地址**: https://github.com/AppFlowy-IO/AppFlowy
+- **项目地址**: <https://github.com/AppFlowy-IO/AppFlowy>
 - **研究文档**:
   - [架构实践](https://skywork.ai/skypage/en/AppFlowy-Docker-My-Journey-to-a-Self-Hosted%2C-AI-Powered-Workspace/1975226298207891456)
 - **核心技术**: Flutter, Rust, Dart FFI, Local-First, SQLite
@@ -253,7 +267,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **NocoDB** - 数据库转智能表格
 
-- **项目地址**: https://github.com/nocodb/nocodb
+- **项目地址**: <https://github.com/nocodb/nocodb>
 - **研究文档**:
   - [架构概览](https://nocodb.com/docs/product-docs/engineering/architecture)
 - **核心技术**: MySQL/PostgreSQL, 动态 Schema 解析, API 生成
@@ -264,7 +278,7 @@ git submodule add git@github.com:zed-industries/zed.git venders/zed
 
 #### **Appwrite** - 开源 Firebase 替代
 
-- **项目地址**: https://github.com/appwrite/appwrite
+- **项目地址**: <https://github.com/appwrite/appwrite>
 - **核心技术**: Docker 微服务, Auth, Database, Storage, Functions
 - **学习要点**:
   - Backend-as-a-Service 平台架构
