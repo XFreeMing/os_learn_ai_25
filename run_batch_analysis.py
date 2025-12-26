@@ -1,5 +1,6 @@
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 
@@ -107,26 +108,146 @@ def run_task(start_index=0, end_index=None):
         print(f"[INFO] Prompt generated for {name}.")
 
         # 3. 执行 claude
-        # 使用 --dangerously-skip-permissions 标志
-        # 将提示词通过 stdin 传入
-        print(f"[CMD] claude --dangerously-skip-permissions (with prompt input)")
+        # 使用 --print 模式进行非交互式运行，避免 TTY/raw mode 错误
+        # 使用 --dangerously-skip-permissions 标志跳过权限检查
+        # 将提示词作为命令行参数传递（或通过 stdin）
+        print(f"[CMD] claude --print --dangerously-skip-permissions (with prompt input)")
+        print(f"[INFO] Prompt length: {len(prompt)} characters")
+        print(f"[INFO] Starting Claude analysis (this may take several minutes)...")
 
-        try:
-            # input=prompt 会将字符串写入 stdin，并在写入完成后关闭 stdin。
-            # 大多数 CLI 工具在 stdin 关闭后会处理输入并最终退出。
-            subprocess.run(
-                ["claude", "--dangerously-skip-permissions"],
-                input=prompt,
-                text=True,
-                check=False,
-            )
-        except FileNotFoundError:
+        # 查找 claude 命令的完整路径
+        claude_cmd = shutil.which("claude")
+        if not claude_cmd:
             print(
                 "[ERROR] 'claude' command not found. Please ensure it is installed and in your PATH."
+            )
+            print("[INFO] You can install it by running: npm install -g @anthropic-ai/claude-code")
+            print("[INFO] Or visit: https://docs.claude.com/zh-CN/docs/claude-code/installation")
+            sys.exit(1)
+
+        try:
+            # 使用 --print 模式进行非交互式运行
+            # 将提示词通过 stdin 传入（在 --print 模式下支持非交互式输入）
+            print("[INFO] Executing Claude command...")
+            print("[INFO] This may take several minutes. Please wait...")
+            sys.stdout.flush()
+            
+            import time
+            start_time = time.time()
+            
+            print("[INFO] Sending prompt to Claude...")
+            print("=" * 80)
+            print("[CLAUDE OUTPUT START]")
+            print("=" * 80)
+            sys.stdout.flush()
+            
+            # 使用 -p 参数直接传递提示词，比 stdin 更可靠
+            # 在 Windows 上使用 subprocess.run 替代 Popen 以避免缓冲问题
+            process = subprocess.Popen(
+                [
+                    claude_cmd,
+                    "--print",
+                    "--dangerously-skip-permissions",
+                    "-p",
+                    prompt,
+                ],
+                stdin=subprocess.DEVNULL,  # 不需要 stdin
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,  # 合并 stderr 到 stdout
+                text=True,
+                bufsize=0,  # 无缓冲，避免 Windows 缓冲问题
+                env={**os.environ, "PYTHONUNBUFFERED": "1"},  # 确保 Python 子进程无缓冲
+            )
+
+            print(f"[DEBUG] Process started with prompt via -p flag")
+            sys.stdout.flush()
+            
+            # 实时读取输出
+            stdout_lines = []
+
+            print("[INFO] Waiting for Claude response (this may take several minutes)...")
+            print("[DEBUG] Process PID: {}".format(process.pid))
+            sys.stdout.flush()
+
+            # 在 Windows 上使用 communicate() 更可靠，避免管道死锁
+            # 设置超时为 1 小时（3600秒）
+            try:
+                # 显示进度信息的线程
+                import threading
+                stop_progress = threading.Event()
+
+                def show_progress():
+                    while not stop_progress.is_set():
+                        elapsed = time.time() - start_time
+                        print(f"[INFO] Still processing... ({elapsed:.0f} seconds elapsed)", flush=True)
+                        stop_progress.wait(30)  # 每30秒显示一次
+
+                progress_thread = threading.Thread(target=show_progress, daemon=True)
+                progress_thread.start()
+
+                # 使用 communicate() 等待进程完成
+                stdout, _ = process.communicate(timeout=3600)
+
+                stop_progress.set()
+                progress_thread.join(timeout=1)
+
+                if stdout:
+                    # 过滤掉 starship 错误
+                    lines = stdout.split('\n')
+                    for line in lines:
+                        if not ("starship" in line.lower() and "error" in line.lower()):
+                            print(line, flush=True)
+                            stdout_lines.append(line + '\n')
+
+            except subprocess.TimeoutExpired:
+                print("\n[ERROR] Claude command timed out after 1 hour")
+                process.kill()
+                process.communicate()  # 清理
+                raise
+            except Exception as e:
+                print(f"\n[ERROR] Error reading output: {e}")
+                import traceback
+                traceback.print_exc()
+                raise
+
+            # 汇总输出
+            stdout = ''.join(stdout_lines) if stdout_lines else ''
+            stderr = ''  # stderr 已合并到 stdout
+            
+            print("\n" + "=" * 80)
+            print("[CLAUDE OUTPUT END]")
+            print("=" * 80)
+            
+            elapsed_time = time.time() - start_time
+            print(f"[INFO] Claude command finished in {elapsed_time:.1f} seconds")
+
+            # 检查返回码
+            returncode = process.returncode
+            if returncode == 0:
+                if stdout.strip():
+                    print(f"\n[SUCCESS] Claude command completed successfully (exit code: {returncode})")
+                else:
+                    print(f"\n[WARN] Claude completed but produced no output (exit code: {returncode})")
+            else:
+                print(f"\n[ERROR] Claude command exited with code {returncode}")
+                if stderr:
+                    print("[ERROR] Error details:")
+                    print(stderr)
+                # 不立即退出，允许继续处理其他任务
+                
+        except subprocess.TimeoutExpired:
+            print("[ERROR] Claude command timed out after 1 hour")
+            process.kill()
+            sys.exit(1)
+        except FileNotFoundError:
+            print(
+                f"[ERROR] 'claude' command not found at: {claude_cmd}"
             )
             sys.exit(1)
         except KeyboardInterrupt:
             print("\n[WARN] Script interrupted by user.")
+            if 'process' in locals():
+                process.kill()
             sys.exit(1)
 
         # 4. 提交并推送更改

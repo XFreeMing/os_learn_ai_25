@@ -2,3 +2,9 @@
 	path = venders/zed
 	url = git@github.com:zed-industries/zed.git
 	branch = main
+[submodule "venders/langgraph"]
+	path = venders/langgraph
+	url = git@github.com:langchain-ai/langgraph.git
+[submodule "venders/ladybird"]
+	path = venders/ladybird
+	url = git@github.com:LadybirdBrowser/ladybird.git
