@@ -20,6 +20,7 @@
 ## Overview
 
 Bun is a modern JavaScript/TypeScript runtime designed as a drop-in replacement for Node.js, with built-in:
+
 - **JavaScript Runtime** powered by WebKit's JavaScriptCore
 - **TypeScript/JSX Transpiler** with native speed
 - **Module Bundler** inspired by esbuild
@@ -28,6 +29,7 @@ Bun is a modern JavaScript/TypeScript runtime designed as a drop-in replacement 
 - **Test Runner** with Jest compatibility
 
 **Codebase Scale:**
+
 - ~78,739 lines of Zig code in `src/`
 - ~449 C++ binding files
 - ~200+ TypeScript/JavaScript module implementations
@@ -214,6 +216,7 @@ flowchart LR
 ```
 
 **Key Memory Features:**
+
 - **Threadlocal heaps**: No synchronization overhead
 - **Arena allocators**: Fast bulk deallocation
 - **GC Integration**: `mi_heap_collect()` for explicit cleanup
@@ -302,6 +305,7 @@ define({
 ```
 
 This generates:
+
 - **C++**: `JSCryptoHasher`, `JSCryptoHasherPrototype`, `JSCryptoHasherConstructor`
 - **Zig**: Type-safe wrappers with `toJS()` and `fromJS()`
 - **TypeScript**: `.d.ts` type definitions

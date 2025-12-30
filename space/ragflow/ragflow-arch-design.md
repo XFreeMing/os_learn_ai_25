@@ -2,7 +2,7 @@
 
 > 文档版本: v0.23.0
 > 分析日期: 2025-12-30
-> 项目地址: https://github.com/infiniflow/ragflow
+> 项目地址: <https://github.com/infiniflow/ragflow>
 
 ## 目录
 
@@ -629,6 +629,7 @@ graph TB
 #### 6.2.2 版面识别
 
 **10种布局类型**:
+
 - Text (正文)
 - Title (标题)
 - Figure (图片)

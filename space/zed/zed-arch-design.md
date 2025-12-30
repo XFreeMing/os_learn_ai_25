@@ -2,7 +2,7 @@
 
 > 版本: 0.219.0
 > 分析日期: 2025-12-24
-> 代码库: https://github.com/zed-industries/zed
+> 代码库: <https://github.com/zed-industries/zed>
 
 ## 目录
 
@@ -348,6 +348,7 @@ graph TB
 ```
 
 **特点：**
+
 - O(log n) 时间复杂度的插入/删除
 - 高效的随机访问
 - 支持增量更新

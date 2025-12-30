@@ -597,6 +597,7 @@ def get_next_version(current: int | None, channel: None) -> int:
 ```
 
 **版本用途**：
+
 - 确定节点是否需要重新执行
 - 支持检查点的增量保存
 - 实现精确的状态回溯
