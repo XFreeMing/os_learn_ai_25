@@ -8,3 +8,42 @@
 [submodule "venders/ladybird"]
 	path = venders/ladybird
 	url = git@github.com:LadybirdBrowser/ladybird.git
+[submodule "venders/granian"]
+	path = venders/granian
+	url = git@github.com:emmett-framework/granian.git
+[submodule "venders/moondream"]
+	path = venders/moondream
+	url = git@github.com:vikhyat/moondream.git
+[submodule "venders/crewAI"]
+	path = venders/crewAI
+	url = git@github.com:crewAIInc/crewAI.git
+[submodule "venders/ragflow"]
+	path = venders/ragflow
+	url = git@github.com:infiniflow/ragflow.git
+[submodule "venders/candle"]
+	path = venders/candle
+	url = git@github.com:huggingface/candle.git
+[submodule "venders/qdrant"]
+	path = venders/qdrant
+	url = git@github.com:qdrant/qdrant.git
+[submodule "venders/surrealdb"]
+	path = venders/surrealdb
+	url = git@github.com:surrealdb/surrealdb.git
+[submodule "venders/spin"]
+	path = venders/spin
+	url = git@github.com:spinframework/spin.git
+[submodule "venders/WasmEdge"]
+	path = venders/WasmEdge
+	url = git@github.com:WasmEdge/WasmEdge.git
+[submodule "venders/bun"]
+	path = venders/bun
+	url = git@github.com:oven-sh/bun.git
+[submodule "venders/AppFlowy"]
+	path = venders/AppFlowy
+	url = git@github.com:AppFlowy-IO/AppFlowy.git
+[submodule "venders/appwrite"]
+	path = venders/appwrite
+	url = git@github.com:appwrite/appwrite.git
+[submodule "venders/nocodb"]
+	path = venders/nocodb
+	url = git@github.com:nocodb/nocodb.git
